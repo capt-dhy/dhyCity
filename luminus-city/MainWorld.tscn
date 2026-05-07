@@ -1,7 +1,9 @@
-[gd_scene format=3 uid="uid://c5a7b8dad0e1"]
+[gd_scene load_steps=5 format=3 uid="uid://c5a7b8dad0e1"]
 
 [ext_resource type="PackedScene" path="res://Models/model.glb" id="1_model"]
 [ext_resource type="PackedScene" uid="uid://bxn8m5e5w1" path="res://Player/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://c8n4y2e5w1u7" path="res://scripts/ui/CodeUI.tscn" id="3_code_ui"]
+[ext_resource type="PackedScene" uid="uid://dp6m5e5w1u7v" path="res://NPCs/Mahdiya.tscn" id="4_mahdiya"]
 
 [node name="MainWorld" type="Node3D"]
 
@@ -11,5 +13,10 @@ shadow_enabled = true
 
 [node name="model" parent="." instance=ExtResource("1_model")]
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CodeUI" parent="." instance=ExtResource("3_code_ui")]
+
+[node name="Mahdiya" parent="." instance=ExtResource("4_mahdiya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)

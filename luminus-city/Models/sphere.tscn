@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://sphere1tscn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sphere"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sphere"]
+
+[node name="Sphere" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_sphere")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sphere")
