@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp6m5e5w1u7v"]
+[gd_scene load_steps=6 format=3 uid="uid://dp6m5e5w1u7v"]
 
 [ext_resource type="Script" uid="uid://dm6m5e5w1u7v" path="res://NPCs/Mahdiya.gd" id="1_script"]
 
@@ -9,6 +9,10 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npc"]
 albedo_color = Color(0.8, 0.4, 0.8, 1)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_interaction"]
+height = 2.0
+radius = 3.0
+
 [node name="Mahdiya" type="CharacterBody3D"]
 script = ExtResource("1_script")
 
@@ -18,3 +22,8 @@ shape = SubResource("CapsuleShape3D_npc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_npc")
 surface_material_override/0 = SubResource("StandardMaterial3D_npc")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+shape = SubResource("CylinderShape3D_interaction")

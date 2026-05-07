@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var line_edit: LineEdit = $Panel/LineEdit
 @onready var run_button: Button = $Panel/Button
+@onready var interaction_prompt: Label = $InteractionPrompt
 
 var registry: CommandRegistry
 var execution_engine: ExecutionEngine
@@ -19,6 +20,7 @@ func _ready() -> void:
 	registry.register_command("spawn", SpawnCommand.new())
 	registry.register_command("teleport", TeleportCommand.new())
 	registry.register_command("set_speed", SpeedCommand.new())
+	registry.register_command("time", TimeCommand.new())
 
 	# Connect signals
 	run_button.pressed.connect(_on_run_pressed)
@@ -26,9 +28,10 @@ func _ready() -> void:
 
 	# Hide by default
 	visible = false
+	interaction_prompt.visible = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_focus_next"): # Tab key placeholder for controller button
+	if event.is_action_pressed("toggle_code_ui"):
 		toggle_ui()
 
 func toggle_ui() -> void:
@@ -55,3 +58,10 @@ func _execute() -> void:
 
 	line_edit.clear()
 	toggle_ui()
+
+func show_interaction_prompt(text: String) -> void:
+	interaction_prompt.text = text
+	interaction_prompt.visible = true
+
+func hide_interaction_prompt() -> void:
+	interaction_prompt.visible = false
