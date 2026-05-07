@@ -56,3 +56,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 
 	move_and_slide()
+
+# Method for CodeUI to set speed
+func set_movement_speed(new_speed: float) -> void:
+	speed = new_speed
+	print("Player speed updated to: ", speed)
